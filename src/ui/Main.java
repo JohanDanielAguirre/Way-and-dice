@@ -24,11 +24,11 @@ public class Main {
         pc = new PlayController(height*width);
         pc.addPlayer("J1",1);
         pc.addPlayer("J2",1);
-        play(1,2);
+        play(0,1);
     }
     private void play(int turn,int nextturn) {
         int dice=0,fate=0;
-        System.out.println("turno del juagdor "+ turn);
+        System.out.println("turno del juagdor "+ (turn+1));
         System.out.println(
                         "1. tirar dado \n" +
                         "2. ver el tablero \n"+
@@ -41,17 +41,17 @@ public class Main {
                 if(!checkwin(pc.getPlayerPosition(turn),dice)){
 					pc.setPositionOnBoard(turn,(pc.getPlayerPosition(turn)+dice));
                 }else {
-                    System.out.println("el jugador "+turn+ " gano la partida");
+                    System.out.println("el jugador "+(turn+1)+ " gano la partida");
 					return;
                 }
             break;
 			case 2:
 				pc.print(height,width,0);
+				  System.out.println();
 			break;
             case 3: 
-				System.out.println("el jugador "+nextturn+" gano la partida"); 
-				return;
-			break;
+				System.out.println("el jugador "+(nextturn+1)+" gano la partida"); 
+			return;
         }
 		play(nextturn,turn);
     }

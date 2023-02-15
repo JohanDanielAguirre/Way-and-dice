@@ -9,12 +9,12 @@ public class PlayController {
         bd = new Board();
         createBoard(valueBoard,0);
         players = new Player[2];
-        setPositionOnBoard();
+      //  setPositionOnBoard();
     }
     private void createBoard(int value,int pointer) {
         if (pointer == value) return;
-        bd.addBox(new Box(++pointer));
-        createBoard(value,++pointer);
+        bd.addBox(new Box(pointer+1));
+        createBoard(value,pointer+1);
     }
     public void addPlayer(String name, int position) {
         if (players[0] == null) players[0] = new Player(name, position);
@@ -32,8 +32,12 @@ public class PlayController {
         setPositionOnBoard();
     }
     private void setPositionOnBoard() {
-        bd.setBoxState(players[0].getPosition(),1);
-        bd.setBoxState(players[1].getPosition(),1);
+		if(players[0]!=null){
+			bd.setBoxState(players[0].getPosition(),1);
+		}else if(players[1]!=null){
+			bd.setBoxState(players[1].getPosition(),1);
+		}
+      
     }
     public void print(int height, int width, int value) {
         if (value == height*width) return;
