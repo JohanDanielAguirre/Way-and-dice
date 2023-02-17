@@ -1,5 +1,9 @@
 package ui;
+import model.Board;
+import model.Box;
 import model.PlayController;
+import model.State;
+
 import java.util.Scanner;
 public class Main {
     //Attribute
@@ -7,6 +11,7 @@ public class Main {
     private int width;
     //Relationship
     private PlayController pc;
+    private Board bd;
     private Scanner sc;
     //Builder
     public Main() {
@@ -14,6 +19,7 @@ public class Main {
     }
     public static void main(String[] args) {
         Main m = new Main();
+        //m.test();
         m.operation();
     }
     private void operation() {
@@ -28,7 +34,7 @@ public class Main {
     }
     private void play(int turn,int nextturn) {
         int dice=0,fate=0;
-        System.out.println("turno del juagdor "+ (turn+1));
+        System.out.println("turno del jugador "+ (turn+1));
         System.out.println(
                         "1. tirar dado \n" +
                         "2. ver el tablero \n"+
